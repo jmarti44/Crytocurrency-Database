@@ -8,6 +8,9 @@ from flask import session
 from flask import jsonify
 import random
 
+
+#export FLASK_APP=main
+#flask run
 #http://localhost:5000/
 
 app = Flask(__name__)

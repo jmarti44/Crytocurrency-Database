@@ -1,1 +1,251 @@
-<h1>Home page</h1>
+<!DOCTYPE html>
+<html lang="en" id= "next";>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}" />
+<h1><center>Cryptocurrency Tracker</center></h1>
+</head>
+
+<body>
+
+<!-- <img src="stonks.jpeg" alt="stonks" width="100px"> -->
+
+
+<!------------------------ List of cryptocurrency ------------------------------>
+<div class="bigBox"><center><b>List of cryptocurrency:</b></center>
+    <pre><u>CrytocurrentyId</u>          <u>CryptoName</u>            <u>CurrentValue</u></pre>
+    <pre>BTC                       Bitcoin               $39,184.73</pre>
+    <pre>ETH                       Ethereum               $2,900.10</pre>
+    <pre>DOGE                      Dogecoin               $0.1493</pre>
+</div>
+
+<!------------------------ Add an investor ------------------------------>
+<button class="open-button" onclick="openForm()">Add an investor</button>
+
+<div class="form-popup" id="myInvestorForm">
+<form action="/action_page.php" class="form-container">
+    <h1>Investor</h1>
+
+    <label for="InvestorId"><b>InvestorId</b></label>
+    <input type="text" placeholder="Enter InvestorId" name="InvestorId" required>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter name" name="name" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter email" name="email" required>
+
+    <button type="submit" class="btn">Add</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form>
+</div>
+
+<!------------------------ Add a cryptocurrency ------------------------------>
+<button class="open-button2" onclick="openForm2()">Add a cryptocurrency</button>
+
+<div class="form-popup" id="myCryptocurrencyForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Cryptocurrency</h1>
+
+    <label for="crytocurrentyId"><b>CrytocurrentyId</b></label>
+    <input type="text" placeholder="Enter crytocurrentyId" name="crytocurrentyId" required>
+
+    <label for="CryptoName"><b>CryptoName</b></label>
+    <input type="text" placeholder="Enter CryptoName" name="CryptoName" required>
+
+    <label for="CurrentValue"><b>CurrentValue</b></label>
+    <input type="text" placeholder="Enter CurrentValue" name="CurrentValue" required>
+
+    <button type="submit" class="btn">Add</button>
+    <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+  </form>
+</div>
+
+<!------------------------ Buy an investment ------------------------------>
+<button class="open-button3" onclick="openForm3()">Buy an investment</button>
+
+<div class="form-popup" id="myBuyForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Buy</h1>
+
+    <label for="InvestorIdBuy"><b>InvestorId</b></label>
+    <input type="text" placeholder="Enter InvestorId" name="InvestorIdBuy" required>
+
+    <label for="crytocurrentyIdBuy"><b>CrytocurrentyId</b></label>
+    <input type="text" placeholder="Enter crytocurrentyId" name="crytocurrentyIdBuy" required>
+
+    <label for="NumShares"><b>NumShares</b></label>
+    <input type="text" placeholder="Enter number of shares" name="NumShares" required>
+
+    <label for="BuyPrice"><b>BuyPrice</b></label>
+    <input type="text" placeholder="Enter price per share" name="BuyPrice" required>
+
+    <button type="submit" class="btn">Buy</button>
+    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
+  </form>
+</div>
+
+<!------------------------ Sell an investment ------------------------------>
+<button class="open-button4" onclick="openForm4()">Sell an investment</button>
+
+<div class="form-popup" id="mySellForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Sell</h1>
+
+    <label for="InvestorIdBuy"><b>InvestorId</b></label>
+    <input type="text" placeholder="Enter InvestorId" name="InvestorIdBuy" required>
+
+    <label for="crytocurrentyIdBuy"><b>CrytocurrentyId</b></label>
+    <input type="text" placeholder="Enter crytocurrentyId" name="crytocurrentyIdBuy" required>
+
+    <label for="NumShares"><b>NumShares</b></label>
+    <input type="text" placeholder="Enter number of shares" name="NumShares" required>
+
+    <label for="SellPrice"><b>SellPrice</b></label>
+    <input type="text" placeholder="Enter price per share" name="SellPrice" required>
+
+    <button type="submit" class="btn">Sell</button>
+    <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
+  </form>
+</div>
+
+<!------------------------ View all investments ------------------------------>
+<button class="open-button5" onclick="openForm5()">View all investments</button>
+
+<div class="form-popup" id="viewInvestmentsForm">
+    <form action="/action_page.php" class="form-container">
+      <h1>View</h1>
+      <p>for a given investor.</p>
+  
+      <label for="InvestorId"><b>InvestorId</b></label>
+      <input type="text" placeholder="Enter InvestorId" name="InvestorId" required>
+  
+      <button type="submit" class="btn">View</button>
+      <button type="button" class="btn cancel" onclick="closeForm5()">Close</button>
+    </form>
+  </div>
+
+
+<!------------------------ View all investors ------------------------------>
+<button class="open-button6" onclick="openForm6()">View all investors</button>
+
+<div class="form-popup" id="viewInvestorsForm">
+    <form action="/action_page.php" class="form-container">
+      <h1>View</h1>
+      <p>for a given cryptocurrency</p>
+  
+      <label for="CrytocurrentyId"><b>CrytocurrentyId</b></label>
+      <input type="text" placeholder="Enter CrytocurrentyId" name="CrytocurrentyId" required>
+  
+      <button type="submit" class="btn">View</button>
+      <button type="button" class="btn cancel" onclick="closeForm6()">Close</button>
+    </form>
+  </div>
+
+
+<script>
+
+//Functions for opening and closing input forms. Loops allows you to toggle open/close on same form button
+
+//For opening Investor form
+function openForm() {
+  var element = document.getElementById("myInvestorForm");
+    if (element.style.display == "block") {
+        element.style.display = "none";
+    }
+    else{
+        element.style.display = "block";
+    }
+
+}
+//For closing Investor form
+function closeForm() {
+  document.getElementById("myInvestorForm").style.display = "none";
+}
+
+//For opening Cryptocurrency form
+function openForm2() {
+  var element = document.getElementById("myCryptocurrencyForm");
+    if (element.style.display == "block") {
+        element.style.display = "none";
+    }
+    else{
+        element.style.display = "block";
+    }
+}
+
+//For closing Cryptocurrency form
+function closeForm2() {
+  document.getElementById("myCryptocurrencyForm").style.display = "none";
+}
+
+//For opening Buy an investment form
+function openForm3() {
+  var element = document.getElementById("myBuyForm");
+    if (element.style.display == "block") {
+        element.style.display = "none";
+    }
+    else{
+        element.style.display = "block";
+    }
+}
+
+//For closing Buy an investment form
+function closeForm3() {
+  document.getElementById("myBuyForm").style.display = "none";
+}
+
+//For opening Sell an investment form
+function openForm4() {
+  var element = document.getElementById("mySellForm");
+    if (element.style.display == "block") {
+        element.style.display = "none";
+    }
+    else{
+        element.style.display = "block";
+    }
+}
+
+//For closing Sell an investment form
+function closeForm4() {
+  document.getElementById("mySellForm").style.display = "none";
+}
+
+//For opening view an investments form
+function openForm5() {
+  var element = document.getElementById("viewInvestmentsForm");
+    if (element.style.display == "block") {
+        element.style.display = "none";
+    }
+    else{
+        element.style.display = "block";
+    }
+}
+
+//For closing view an investments form
+function closeForm5() {
+  document.getElementById("viewInvestmentsForm").style.display = "none";
+}
+
+//For opening view an investor form
+function openForm6() {
+  var element = document.getElementById("viewInvestorsForm");
+    if (element.style.display == "block") {
+        element.style.display = "none";
+    }
+    else{
+        element.style.display = "block";
+    }
+}
+
+//For closing view an investor form
+function closeForm6() {
+  document.getElementById("viewInvestorsForm").style.display = "none";
+}
+
+</script>
+</body>
+</html>
